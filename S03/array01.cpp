@@ -10,7 +10,7 @@ void generateSortedArray(int a[], int size = 1000) {
     }
 }
 
-void storeInFile(int a[], int size = 1000, string fileName = "array0.txt") {
+void storeInFile(int a[], int size = 1000, string fileName = "array01.txt") {
     ofstream f(fileName);
     for(int i = 0; i < size; i++) { 
         f << a[i] << " "; 
@@ -18,7 +18,7 @@ void storeInFile(int a[], int size = 1000, string fileName = "array0.txt") {
     f.close(); 
 }
 
-void readFile(int a[], int size = 1000, string fileName = "array0.txt") {
+void readFile(int a[], int size = 1000, string fileName = "array01.txt") {
     ifstream f(fileName);
     for(int i = 0; i < size; i++) { 
         f >> a[i];
@@ -26,15 +26,16 @@ void readFile(int a[], int size = 1000, string fileName = "array0.txt") {
     f.close(); 
 }
 
-int  binSearchRec(int x, int a[], int start, int end, int size = 1000) { 
+int  binSearchRec(int x, int a[], int start, int end, int& count, int size = 1000) { 
     if (start > end) { 
         return -1; 
     }
     int mid = (start + end) / 2; 
+    count++; 
     if (x > a[mid]) { 
-        return binSearchRec(x, a, mid + 1, end);
+        return binSearchRec(x, a, mid + 1, end, count);
     } else if (x < a[mid]) { 
-        return binSearchRec(x, a, start, mid - 1);
+        return binSearchRec(x, a, start, mid - 1, count);
     } else { 
         return mid; 
     }
@@ -78,11 +79,13 @@ int main() {
          cout << "Number of comparison: " << numOfComparison << endl; 
         
         // call the rec version
-        index = binSearchRec(x, a, 0, 999);
+        numOfComparison = 0;
+        index = binSearchRec(x, a, 0, 999, numOfComparison);
         if (index >= 0) {
             cout << "Rec-Number found at index " << index << endl; 
         } else { 
             cout << "Rec-Number not found!\n";
         }
+        cout << "Rec-Number of comparison: " << numOfComparison << endl; 
     }
 }
