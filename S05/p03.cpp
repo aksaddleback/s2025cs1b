@@ -1,8 +1,8 @@
 #include<iostream> 
 using namespace std; 
 
-int * getArray(int count) { 
-    int * arr = new int[count];
+int* getArray(int count) { 
+    int* arr = new int[count];
     for(int i = 0; i < count; i++) { 
         cin >> arr[i];
     }
@@ -19,7 +19,7 @@ void printArray(int a[3], int count) {
 }
 
 int main() { 
-    int * ar = getArray(3);
+    int* ar = getArray(3);
     printArray(ar, 3);
     delete[] ar; 
 }
