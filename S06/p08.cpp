@@ -30,19 +30,27 @@ void readListFromFile(Node*& h, Node*& t, string fn = "p0.txt") {
     f.close();
 }
 
-void removeAll(int x, Node* head) { 
+void removeAll(int x, Node*& head, Node*& tail) { 
     Node* p = head; 
     while(p != nullptr) { 
         // remove p if value is = x
         if (p->val == x) {
-            if (p->next) {
+            Node* toDelete = p; 
+            if (p->next) {  // if not last node
                 p->next->prev = p->prev;  // *((*p).next).prev = (*p).prev
-            } 
-            if (p->prev) {
-                p->prev->next = p->next; 
+            } else {        // if last node
+                tail = p->prev;
             }
+            if (p->prev) {  // if not first node
+                p->prev->next = p->next; 
+            } else {        // if first nodw
+                head = p->next; 
+            }
+            p = p->next; 
+            delete toDelete; 
+        } else { 
+            p = p->next; 
         }
-        p = p->next; 
     }
 }
 
@@ -61,6 +69,6 @@ int main() {
     Node* tail = nullptr; 
     readListFromFile(head, tail); // creating a doubling linked list (non-circular)
     printList(head);
-    removeAll(5, head);
+    removeAll(5, head, tail);
     printList(head);
 }
