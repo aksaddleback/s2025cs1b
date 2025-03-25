@@ -10,12 +10,13 @@ struct Node {
 
 void addToTheEnd(Node*& h, Node*& t, int val) {
     Node* newNode = new Node {val, nullptr, nullptr}; 
-    if (h == nullptr) { 
+    if (h == nullptr) { // list is empy
         h = newNode; 
         t = newNode;
         return; 
     }
-    t->next = newNode; 
+    // if list is not empty
+    t->next = newNode;
     newNode->prev = t; 
     t = newNode;
 }
@@ -36,7 +37,7 @@ void removeAll(int x, Node*& head, Node*& tail) {
         // remove p if value is = x
         if (p->val == x) {
             Node* toDelete = p; 
-            if (p->next) {  // if not last node
+            if (p->next) {  // if not last node --  if (p->next != nullptr)
                 p->next->prev = p->prev;  // *((*p).next).prev = (*p).prev
             } else {        // if last node
                 tail = p->prev;
@@ -59,7 +60,6 @@ void printList(Node* head) {
     while(head != nullptr) { 
         cout << head->val << " "; 
         head = head->next;  // head = (*head).next
-        if (counter++ == 100) { break; }
     }
     cout << endl; 
 }
@@ -67,7 +67,7 @@ void printList(Node* head) {
 int main() { 
     Node* head = nullptr;
     Node* tail = nullptr; 
-    readListFromFile(head, tail); // creating a doubling linked list (non-circular)
+    readListFromFile(head, tail); // creating a double linked list (non-circular)
     printList(head);
     removeAll(5, head, tail);
     printList(head);
