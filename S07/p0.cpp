@@ -35,11 +35,22 @@ class Person {
         cout << gender << endl; 
         address.display(); 
     }
-    bool compareYourself(Person other) { 
-        cout << this->age << endl; 
-        cout << this->name << endl; 
-        cout << this->gender << endl; 
-        return true; 
+    void compareYourself(Person other) { 
+        // cout << this->age << endl; 
+        // cout << this->name << endl;  // *this.name
+        // cout << this->gender << endl; 
+
+        // cout << other.age << endl; 
+        // cout << other.name << endl; 
+        // cout << other.gender << endl; 
+        if (this->age == other.age and 
+            this->name == other.name and
+            this->gender == other.gender) // let's ignore the address for now
+            {
+                cout << this->name <<  ": I am equal to " << other.name << "!\n";
+            } else { 
+                cout << this->name <<  ": I am NOT equal to " << other.name << "!\n";
+            }
     }
 
     private: 
@@ -54,5 +65,6 @@ int main() {
     Person h(22, "Hunter", 'm');
     j.display(); 
     h.display();
-    //p1.compareYourself(p2);
+    j.compareYourself(h); 
+    h.compareYourself(j); 
 }
