@@ -1,0 +1,29 @@
+JFK
+New York
+
+LAX
+Los Angeles
+
+SFO
+San Francisco
+
+ORD
+Chicago
+
+DFW
+Dallas-Fort Worth
+
+ATL
+Atlanta
+
+DEN
+Denver
+
+SEA
+Seattle
+
+MIA
+Miami
+
+BOS
+Boston
