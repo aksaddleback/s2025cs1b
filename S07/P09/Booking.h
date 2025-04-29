@@ -7,13 +7,14 @@
 using namespace std; 
 
 class Booking { 
-    private: 
+    private:
+    static int lastBookingID; 
     int bookingID;
     Passenger* passenger;
     Flight* flight;
-    string bookingDate;
+    //string bookingDate;
     public: 
-    Booking(Passenger* p, Flight* f); 
+    Booking(Passenger* p, Flight* f, int id = -1); 
     ~Booking(); 
     void displayBooking() const;
 };

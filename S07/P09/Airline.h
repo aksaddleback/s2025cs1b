@@ -30,6 +30,7 @@ class Airline {
     void addAirport(Airport* airport); 
     void addPassenger(Passenger* passenger);
     void addFlight(Flight* flight);
+    void addBooking(Booking* b);
     Booking* createBooking(int passengerID, const string& flightNumber);
     Passenger* findPassenger(int passengerID) const;
     Flight* findFlight(const string& flightNumber) const;

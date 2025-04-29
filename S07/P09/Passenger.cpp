@@ -1,10 +1,15 @@
 #include "Passenger.h"
 
-int Passenger::lastID = 1000; 
+int Passenger::lastID = 100; 
 
-Passenger::Passenger(const string& name, const string& email) 
+Passenger::Passenger(const string& name, const string& email, int id) 
     : name(name), contactEmail(email) { 
-        passengerID = lastID++; 
+        if (id != -1) { 
+            passengerID = id;
+            lastID = id > lastID ? id + 1 : lastID; 
+        } else { 
+            passengerID = lastID++;
+        }
     }
 
 Passenger::~Passenger() { 

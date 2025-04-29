@@ -6,12 +6,12 @@ using namespace std;
 
 class Passenger { 
     private: 
+    static int lastID;
     int passengerID;
     string name;
     string contactEmail;
     public: 
-    static int lastID;
-    Passenger(const string& name, const string& email);
+    Passenger(const string& name, const string& email, int id = -1);
     ~Passenger(); 
     void displayPassenger() const;
     int getPassengerID() const; 

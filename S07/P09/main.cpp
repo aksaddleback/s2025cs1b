@@ -2,6 +2,8 @@
 #include "Passenger.h"
 #include "Airport.h"
 #include "Flight.h"
+#include "Airline.h"
+#include "DataHandler.h"
 using namespace std; 
 
 Passenger* getPassenger() {
@@ -14,7 +16,7 @@ Passenger* getPassenger() {
     cout << "Enter contactEmail:";
     getline(cin, contactEmail);
 
-    return new Passenger(1, name, contactEmail);
+    return new Passenger(name, contactEmail, 100);
 }
 
 Airport* getAirport() {
@@ -45,12 +47,16 @@ Flight* getFlight(Airport* origin, Airport* dest) {
 }
 
 int main() { 
-    Passenger* passenger = getPassenger();
-    passenger->displayPassenger(); 
-
-    Airport* airport = getAirport(); 
-    airport->displayAirport();
-
-    Flight* flight = getFlight(airport, airport); 
-    flight->displayFlightDetails(); 
+    Airline airline("Saddleback Airline", 100, 1000, 1000, 1000);
+    DataHandler dh;
+    dh.loadPassengers(airline, "files/passengers.txt");
+    airline.displayAllPassengers(); 
+    dh.loadAirports(airline, "files/airports.txt"); 
+    airline.displayAllAirports(); 
+    dh.loadFlights(airline, "files/flights.txt"); 
+    airline.displayAllFlights(); 
+    dh.loadBookings(airline, "files/bookings.txt");
+    airline.displayAllBookings();
+    
+    
 }

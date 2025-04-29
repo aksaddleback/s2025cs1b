@@ -13,6 +13,7 @@ class Airport {
     Airport(const string& airportCode, const string& city);
     ~Airport(); 
     void displayAirport() const;
+    string getCode() const; 
 };
 
 #endif

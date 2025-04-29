@@ -8,7 +8,6 @@ using namespace std;
 
 class Flight { 
     private: 
-    static int FlightCount; // class member -- static
     string flightNumber;    // object member 
     Airport* originAirport;
     Airport* destinationAirport;
@@ -24,6 +23,7 @@ class Flight {
     void displayFlightDetails() const;
     void displayPassengerManifest() const;
     bool isFull() const;
+    string getFlightNumber() const;
 };
 #endif
 

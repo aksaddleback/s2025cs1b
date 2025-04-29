@@ -49,3 +49,7 @@ void Flight::displayPassengerManifest() const {
 bool Flight::isFull() const {
     return passengerCount >= capacity; 
 }
+
+string Flight::getFlightNumber() const { 
+    return flightNumber;
+}
